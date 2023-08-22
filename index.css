@@ -1,0 +1,10 @@
+h1 {
+  text-align: center;
+}
+ul {
+  width: max-content;
+  margin: 0 auto;
+}
+li {
+  padding: 10px 0;
+}
