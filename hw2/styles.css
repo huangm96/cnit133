@@ -8,6 +8,7 @@ ul.nav {
   flex-wrap: wrap;
   padding-bottom: 16px;
   border-bottom: 2px solid gray;
+  margin-bottom: 16px;
 }
 ul.nav li {
   border: 1px solid black;
@@ -20,4 +21,37 @@ ul.nav li:hover {
 ul.nav li a {
   text-decoration: none;
   color: black;
+}
+
+.part2Content {
+  width: 500px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+}
+.part2Content .inputGroup label {
+  font-weight: bold;
+}
+.part2Content .inputGroup input {
+  width: 100%;
+  margin: 5px 0;
+  padding: 5px;
+  font-size: 16px;
+}
+.part2Content .btnGroup {
+  align-self: end;
+}
+.part2Content .btnGroup button {
+  margin: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  border-color: darkgray;
+  cursor: pointer;
+}
+.part2Content .btnGroup button:nth-child(1) {
+  background-color: rgb(96, 211, 96);
+}
+.part2Content .btnGroup button:nth-child(2) {
+  background-color: rgb(241, 163, 163);
 }
