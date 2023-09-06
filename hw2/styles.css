@@ -55,3 +55,36 @@ ul.nav li a {
 .part2Content .btnGroup button:nth-child(2) {
   background-color: rgb(241, 163, 163);
 }
+#instructionsBtn {
+  width: 400px;
+  padding: 8px;
+  margin: 10px auto;
+  border: 1px solid black;
+  text-align: center;
+  cursor: pointer;
+}
+#instructionsBtn:hover {
+  background-color: rgb(209, 255, 209);
+}
+#instructionsContent {
+  width: max-content;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+}
+#instructionsContent.hide {
+  display: none;
+}
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 8px;
+}
+table {
+  margin: 30px auto;
+}
+td:nth-child(3) {
+  text-align: right;
+}

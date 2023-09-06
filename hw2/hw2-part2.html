@@ -77,8 +77,8 @@
                 const sum = [num1Val, num2Val, num3Val].reduce((sum, cur) => sum + Number(cur), 0);
                 const average = sum / 3
                 const product = [num1Val, num2Val, num3Val].reduce((product, cur) => {
-                    return Number(product) / Number(cur)
-                })
+                    return product * Number(cur)
+                }, 1)
                 const smallest = Math.min(num1Val, num2Val, num3Val)
                 const largest = Math.max(num1Val, num2Val, num3Val)
 
