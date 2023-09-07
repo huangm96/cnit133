@@ -22,3 +22,39 @@ ul.nav li a {
   text-decoration: none;
   color: black;
 }
+
+#gradeForm {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+}
+#gradeForm input {
+  margin-bottom: 8px;
+}
+#gradeForm label {
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+#gradeForm .btnGroup {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+#gradeForm .btnGroup button:nth-child(1) {
+  background-color: rgb(142, 235, 142);
+}
+#gradeForm .btnGroup button:nth-child(2) {
+  background-color: rgb(255, 203, 203);
+}
+#gradeForm .btnGroup button {
+  margin-left: 20px;
+  padding: 8px;
+  cursor: pointer;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+#gradeResult {
+  width: 300px;
+  margin: 0 auto;
+}

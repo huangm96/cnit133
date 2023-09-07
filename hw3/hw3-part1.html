@@ -10,7 +10,7 @@
     <title>JavaScript - Homework 2</title>
 </head>
 
-<body>
+<body class="part1">
     <h1>CNIT 133 Homework 3 (Part 1) - Student Grades</h1>
     <ul class="nav">
         <li>
@@ -19,8 +19,67 @@
         <li><a href="./hw3-part2.html">Part 2 - Salespeople Weekly Earnings</a></li>
         <li><a href="./hw3-extra.html">Extra credit -Math game</a></li>
     </ul>
-    <script>
+    <h1>Student Grades</h1>
+    <form id="gradeForm">
+        <label for="homeworkAverage">Homework Average: </label>
+        <input type="number" name="homeworkAverage" id="homeworkAverage" required min="0" max="100" />
+        <label for="midterm">Midterm:</label>
+        <input type="number" name="midterm" id="midterm" required min="0" max="100" />
+        <label for="finalExam">Final Exam:</label>
+        <input type="number" name="finalExam" id="finalExam" required min="0" max="100" />
+        <label for="participation">Participation:</label>
+        <input type="number" name="participation" id="participation" required min="0" max="100" />
+        <div class="btnGroup">
+            <button id="gradeSubmit" type="submit">Submit</button>
+            <button id="gradeClear">Clear</button>
+        </div>
 
+    </form>
+    <div id="gradeResult"></div>
+    <script>
+        const form = document.getElementById("gradeForm");
+        const homeworkAverage = document.getElementById("homeworkAverage");
+        const midterm = document.getElementById("midterm")
+        const finalExam = document.getElementById("finalExam")
+        const participation = document.getElementById("participation")
+        const submitBtn = document.getElementById("gradeSubmit")
+        const clearBtn = document.getElementById("gradeClear")
+        const gradeResult = document.getElementById("gradeResult")
+        form.addEventListener("submit", function (event) {
+            event.preventDefault()
+            const homeworkAverageVal = parseInt(homeworkAverage.value)
+            const midtermVal = parseInt(midterm.value)
+            const finalExamVal = parseInt(finalExam.value)
+            const participationVal = parseInt(participation.value)
+            const finalAvg = Math.round((.5 * homeworkAverageVal) + (.2 * midtermVal) + (.2 * finalExamVal) + (.1 * participationVal))
+            let finalGrade;
+            switch (true) {
+                case (finalAvg >= 90):
+                    finalGrade = "A"
+                    break
+                case (finalAvg >= 80):
+                    finalGrade = "B"
+                    break
+                case (finalAvg >= 70):
+                    finalGrade = "C"
+                    break
+                case (finalAvg >= 60):
+                    finalGrade = "D"
+                    break
+                default:
+                    finalGrade = "F"
+            }
+            gradeResult.innerHTML = `<h3>Final Average: ${finalAvg}</h3>
+            <h3>Final Grade: ${finalGrade}</h3>
+            ${finalGrade === "D" || finalGrade === "F" ? "<h3>Student must retake the course</h3>" : ""}`
+        })
+        clearBtn.addEventListener("click", function () {
+            homeworkAverage.value = ""
+            midterm.value = ""
+            finalExam.value = ""
+            participation.value = ""
+            gradeResult.innerHTML = ""
+        })
     </script>
 </body>
 
