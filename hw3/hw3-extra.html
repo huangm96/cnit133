@@ -21,10 +21,95 @@
 
         <li><a href="./hw3-part2.html">Part 2 - Salespeople Weekly Earnings</a></li>
     </ul>
+    <div id="game">
+        <h3 id="question"></h3>
+        <div id="equation">
 
+        </div>
+        <div id="gameResult"></div>
+    </div>
     <script>
         $(document).ready(function () {
+            let methodWord, methodSign, result
+            createQuestion()
+            $(document).on('keypress', function (e) {
+                if (e.which == 13) {
+                    $("#gameResult").html("")
+                    if (parseFloat($("#equation").children("input").eq(2).val()).toFixed(2) === result) {
+                        $("#gameResult").append(`<p>Very good!</p><p>Play again?</p><button id="playAgain">Yes</button><button id="stop">No</button>`)
 
+                    } else {
+                        $("#gameResult").append(`<p>No. Please try again.</p>`)
+                    }
+                }
+            });
+
+            $("#game").on("click", "#playAgain", function () {
+                $("#question").html(``)
+                $("#equation").html("")
+                $("#equation").children("input").eq(2).value = ""
+                $("#gameResult").html("")
+                createQuestion()
+            });
+            $("#game").on("click", "#stop", function () {
+                $("#gameResult").html("")
+                $("#gameResult").append(`<p>Thanks for playing, see you next time</p>`)
+            });
+            function createQuestion() {
+
+                const method = Math.floor(Math.random() * 4)
+                let x, y
+                x = Math.floor(Math.random() * 10)
+                y = Math.floor(Math.random() * 10)
+                while (y === 0 && method === 3) {
+                    x = Math.floor(Math.random() * 10)
+                    y = Math.floor(Math.random() * 10)
+                }
+                switch (method) {
+                    case 0:
+                        methodWord = "add"
+                        methodSign = "+"
+                        result = add(x, y).toFixed(2)
+                        break;
+                    case 1:
+                        methodWord = "minus"
+                        methodSign = "-"
+                        result = minus(x, y).toFixed(2)
+                        break
+                    case 2:
+                        methodWord = "times"
+                        methodSign = "x"
+                        result = multiply(x, y).toFixed(2)
+                        break
+                    case 3:
+                        methodWord = "divide"
+                        methodSign = "/"
+                        result = divide(x, y).toFixed(2)
+                        break
+                    default:
+                        return
+                }
+                $("#question").html(`How much is X ${methodWord} Y?`)
+                $("#equation").html(`<input value=${x} readonly />
+                <span>${methodSign}</span>
+                <input value=${y} readonly />
+                <span>=</span>
+                <input type="number" />
+                `)
+            }
+
+            function add(x, y) {
+                return x + y
+            }
+            function minus(x, y) {
+                return x - y
+            }
+            function multiply(x, y) {
+                return x * y
+            }
+            function divide(x, y) {
+                return x / y
+            }
         })
     </script>
 </body>

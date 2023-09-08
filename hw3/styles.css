@@ -76,3 +76,27 @@ ul.nav li a {
 #salesResult input {
   text-align: right;
 }
+#equation input {
+  display: inline;
+  width: 100px;
+  text-align: right;
+}
+#equation span {
+  margin: 0 10px;
+}
+#game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#game > div {
+  margin-bottom: 20px;
+}
+#gameResult {
+  text-align: center;
+}
+#gameResult > button {
+  margin: 0 20px;
+  cursor: pointer;
+}
