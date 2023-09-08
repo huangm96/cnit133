@@ -58,3 +58,21 @@ ul.nav li a {
   width: 300px;
   margin: 0 auto;
 }
+#salesForm {
+  width: 400px;
+  margin: 0 auto;
+}
+#salesForm > div {
+  margin-bottom: 10px;
+}
+#salesForm button {
+  display: block;
+  margin-bottom: 10px;
+}
+#salesResult {
+  width: 400px;
+  margin: 0 auto;
+}
+#salesResult input {
+  text-align: right;
+}

@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Homework 2 for JavaScript, jQuery, AJAX course at CCSF" />
     <link rel="stylesheet" href="styles.css" />
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <title>JavaScript - Homework 2</title>
 </head>
 
@@ -20,10 +23,110 @@
 
         <li><a href="./hw3-extra.html">Extra credit - Math game</a></li>
     </ul>
-    <div class="part2Content">
-
-    </div>
+    <form id="salesForm">
+        <div>
+            <label for="name">Seller's Name: </label>
+            <input type="text" id="name" title="Please make sure that the salesperson's name is spelled correctly." />
+        </div>
+        <p>For each item type the quantity sold by the seller</p>
+        <div>
+            <label for="item1">Item 1: </label>
+            <input type="number" id="item1" min="0" />
+        </div>
+        <div>
+            <label for="item2">Item 2: </label>
+            <input type="number" id="item2" min="0" />
+        </div>
+        <div>
+            <label for="item3">Item 3: </label>
+            <input type="number" id="item3" min="0" />
+        </div>
+        <div>
+            <label for="item4">Item 4: </label>
+            <input type="number" id="item4" min="0" />
+        </div>
+        <button id="salesSubmit" type="submit">Submit</button>
+        <button id="salesClear">Clear Form</button>
+    </form>
+    <table id="salesResult">
+        <thead>
+            <tr>
+                <th>Item #</th>
+                <th>Price</th>
+                <th>Qty Sold</th>
+                <th>Total $</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="item1Result">
+                <td>1</td>
+                <td data-price="20.99">$20.99</td>
+                <td><input readonly /></td>
+                <td><input readonly /></td>
+            </tr>
+            <tr id="item2Result">
+                <td>2</td>
+                <td data-price="12.75">$12.75</td>
+                <td><input readonly /></td>
+                <td><input readonly /></td>
+            </tr>
+            <tr id="item3Result">
+                <td>3</td>
+                <td data-price="9.95">$9.95</td>
+                <td><input readonly /></td>
+                <td><input readonly /></td>
+            </tr>
+            <tr id="item4Result">
+                <td>4</td>
+                <td data-price="35.89">$35.89</td>
+                <td><input readonly /></td>
+                <td><input readonly /></td>
+            </tr>
+            <tr>
+                <td colspan="3">Total Amount Sold</td>
+                <td><input readonly /></td>
+            </tr>
+            <tr>
+                <td colspan="3">Total Weekly Earnings</td>
+                <td><input readonly /></td>
+            </tr>
+        </tbody>
+    </table>
     <script>
+        $(document).ready(function () {
+            const item1 = document.getElementById("item1");
+            const item2 = document.getElementById("item2")
+            const item3 = document.getElementById("item3")
+            const item4 = document.getElementById("item4")
+            $("#name").tooltip();
+            $("#salesSubmit").on("click", function (event) {
+                event.preventDefault();
+                const item1Val = Math.floor(+item1.value);
+                const item2Val = Math.floor(+item2.value);
+                const item3Val = Math.floor(+item3.value);
+                const item4Val = Math.floor(+item4.value);
+                const itemsInput = [item1Val, item2Val, item3Val, item4Val]
+                let totalSold = 0
+                $('table tbody tr').each(function (index) {
+                    if (index < itemsInput.length) {
+                        const price = +$(this).children("td").eq(1).attr("data-price")
+                        const totalPrice = (price * itemsInput[index]).toFixed(2)
+                        $(this).children("td").eq(2).children("input").val(itemsInput[index])
+                        $(this).children("td").eq(3).children("input").val(totalPrice)
+                        totalSold += +totalPrice
+                    }
+                    else if (index === itemsInput.length) {
+                        $(this).children("td").eq(1).children("input").val(totalSold.toFixed(2))
+                    } else {
+                        $(this).children("td").eq(1).children("input").val(250 + +(totalSold * 0.09).toFixed(2))
+                    }
+                })
+            })
+            $("#salesClear").on("click", function (event) {
+                event.preventDefault();
+                $("input").val("")
+            })
+        })
 
 
     </script>
