@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <title>JavaScript - Homework 4</title>
 </head>
 
@@ -23,7 +24,7 @@
     <h3 id="loop_sum"></h3>
     <h3 id="while_product"></h3>
     <h3 id="while_sum"></h3>
-    <!--  On that same web page, you will use jQuery UI to allow the user to drag an element to any area of the page - can be any type of element. For more on jQuery UI draggable-->
+    <div id="draggable_box">drag me around</div>
     <script>
         $(document).ready(function () {
 
@@ -87,6 +88,11 @@
                 }
                 return [arr, sum]
             }
+            $("#draggable_box").draggable({
+                drag: function (event, ui) {
+
+                }
+            })
         })
     </script>
 </body>

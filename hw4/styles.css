@@ -22,6 +22,11 @@ ul.nav li a {
   text-decoration: none;
   color: black;
 }
+#draggable_box {
+  width: 150px;
+  height: 150px;
+  border: 1px solid gray;
+}
 table,
 td,
 th {
