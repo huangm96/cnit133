@@ -43,3 +43,23 @@ tbody tr:nth-child(odd) {
 tbody tr:nth-child(even) {
   background-color: yellow;
 }
+form {
+  width: max-content;
+  margin: 20px auto;
+}
+#result {
+  width: max-content;
+  margin: 10px auto;
+}
+.square_row {
+  margin: 0px;
+  height: 15px;
+}
+.square_row span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+.error {
+  color: red;
+}

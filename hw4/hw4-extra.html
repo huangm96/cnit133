@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
     <title>JavaScript - Homework 4</title>
 </head>
@@ -19,6 +21,50 @@
 
         <li><a href="./hw4-part2.html">Part 2 - Compound Interest</a></li>
     </ul>
+    <form>
+        <input type="number" required>
+        <button type="submit">Submit</button><button type="button" id="clearBtn">Clear</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        $(document).ready(function () {
+            $("form").on('submit', function () {
+                event.preventDefault();
+                $("#result").html('');
+                const inputVal = parseInt($(this).children("input").val())
+                if (inputVal >= 2 && inputVal <= 10) {
+                    printSquare(inputVal)
+                } else {
+                    $("#result").append("<p class='error'>The input value should >= 2 and <=10 </p>")
+                }
+            })
+            $("#clearBtn").on("click", function () {
+                $(this).siblings("input").val('')
+                $("#result").html('');
+            })
+
+
+
+            function printSquare(num) {
+                let square = ""
+                for (let i = 0; i < num; i++) {
+                    let row = []
+                    for (let j = 0; j < num; j++) {
+                        if (i === 0 || i === num - 1) {
+                            row.push("<span>*</span>")
+                        } else if (j === 0 || j === num - 1) {
+                            row.push("<span>*</span>")
+                        } else {
+                            row.push("<span>&nbsp</span>")
+                        }
+                    }
+                    const row_str = row.join("")
+                    square += `<p class="square_row">${row_str}</p>`
+                }
+                $("#result").append(square)
+            }
+        })
+    </script>
 </body>
 
 </html>
