@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css" />
-
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <title>JavaScript - Homework 4</title>
 </head>
 
@@ -19,6 +20,44 @@
 
         <li><a href="./hw4-extra.html">Extra credit </a></li>
     </ul>
+    <h1 id="compound-interest">Learn about compound interest</h1>
 </body>
+<script>
+    $(document).ready(function () {
+        const yearsArr = [1, 2, 3, 4, 5]
+        const ratesArr = [0.05, 0.06, 0.07]
+        const initialAmount = 1000
+        for (let rate of ratesArr) {
+            let tbodyRow = ""
+            for (let year of yearsArr) {
+                const interest = interestCalculator(initialAmount, rate, year)
+                let row = `<tr><td>${year}</td><td>${interest.toFixed(2)}</td><td>${rate}</td></tr>`
+                tbodyRow += row
+            }
+
+            const table = `<table>
+                <thead><tr>
+                    <th>Year</th>
+                    <th>Amount on deposit</th>
+                    <th>Interest Rate</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    ${tbodyRow}
+                </tbody>
+            </table>`
+
+            $(document.body).append(table)
+        }
+        //A = P(1 + r)n
+        /*P is the principal (the initial amount you borrow or deposit)
+          r is the annual rate of interest (percentage) that, for 5% for example, would be 0.05
+          n is the number of years the amount is deposited
+          A is the amount of money accumulated after n years, including interest*/
+        function interestCalculator(initialAmount, annualRate, numberOfYears) {
+            return initialAmount * Math.pow(1 + annualRate, numberOfYears)
+        }
+    })
+</script>
 
 </html>

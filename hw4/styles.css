@@ -22,3 +22,24 @@ ul.nav li a {
   text-decoration: none;
   color: black;
 }
+table,
+td,
+th {
+  border: 1px dotted black;
+  padding: 8px;
+}
+table {
+  border-collapse: collapse;
+  width: max-content;
+  margin: 20px auto;
+}
+thead {
+  background-color: darkred;
+  color: white;
+}
+tbody tr:nth-child(odd) {
+  background-color: orange;
+}
+tbody tr:nth-child(even) {
+  background-color: yellow;
+}
