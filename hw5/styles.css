@@ -23,14 +23,31 @@ ul.nav li a {
   color: black;
 }
 
-form {
+.part-1 form {
   width: max-content;
   margin: 20px auto;
 }
-form div {
+.part-1 form div {
   margin: 10px 20px;
 }
 
-#message {
+.part-1 #message {
   text-align: center;
+}
+
+.part-3 form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 20px auto;
+}
+.part-3 form label {
+  margin: 5px 0px;
+}
+.part-3 form div {
+  margin: 20px 0px;
+}
+.part-3 #result {
+  width: 400px;
+  margin: 20px auto;
 }
