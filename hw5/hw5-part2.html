@@ -20,7 +20,40 @@
         <li><a href="./hw5-part1.html">Part 1 - Form</a></li>
         <li><a href="./hw5-part3.html">Part 3 - Table </a></li>
     </ul>
+    <div><select id="menu-1">
+            <option value="">URL Links</option>
+            <option value="https://www.ccsf.edu/">CCSF website</option>
+            <option value="https://www.google.com/">Google website</option>
+            <option value="https://www.w3schools.com/">w3schools website</option>
 
+        </select></div>
+    <div><select id="menu-2">
+            <option value="">URL Links</option>
+            <option value="https://www.ccsf.edu/">CCSF website</option>
+            <option value="https://www.google.com/">Google website</option>
+            <option value="https://www.w3schools.com/">w3schools website</option>
+        </select>
+        <button>Navigate</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#menu-1').on('change', function () {
+                const url = $(this).val()
+                if (url) {
+                    window.open(url, '_blank')
+                }
+
+            })
+            $("button").on("click", function () {
+                const url = $('#menu-2').val()
+                if (url) {
+                    window.open(url, '_blank')
+                }
+            });
+
+        })
+    </script>
 </body>
 
 </html>
