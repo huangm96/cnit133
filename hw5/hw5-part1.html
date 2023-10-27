@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -20,7 +20,86 @@
         <li><a href="./hw5-part2.html">Part 2 - Pulldown Menus</a></li>
         <li><a href="./hw5-part3.html">Part 3 - Table </a></li>
     </ul>
+    <form>
+        <div>
+            <label for="name">Full Name</label>
+            <input type="text" name="anme" id="name" />
+        </div>
+        <div>
+            <label>Age:</label>
+            <input type="radio" name="age" id="age-small" value="less than 21" /><label for="age-small">less than
+                21</label>
+            <input type="radio" name="age" id="age-medium" value="between 21 and 50" /><label for="age-medium">between
+                21 and 50</label>
+            <input type="radio" name="age" id="age-large" value="older than 50" /><label for="age-large">older than
+                50</label>
+        </div>
+        <div>
+            <label>Used browsers:</label>
+            <input type="checkbox" name="browsers" id="browser-firefox" value="firefox" /><label
+                for="browser-firefox">Firefox</label>
+            <input type="checkbox" name="browsers" id="browser-edge" value="edge" /><label
+                for="browser-edge">Edge</label>
+            <input type="checkbox" name="browsers" id="browser-chrome" value="chrome" /><label
+                for="browser-chrome">Chrome</label>
+            <input type="checkbox" name="browsers" id="browser-safari" value="safari" /><label
+                for="browser-safari">Safari</label>
+        </div>
+        <div><select name="movie-type" id="movie-type">
+                <option value="">Pick the type of movie you prefers</option>
+                <option value="action">Action</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="documentary">Documentary</option>
+                <option value="science ficiton">Science Ficiton</option>
+            </select></div>
+        <div>
+            <button type="submit" id="submitBtn">Submit</button>
+            <button type="reset" id="clearBtn">Clear</button>
+        </div>
 
+    </form>
+    <p id="message"></p>
+    <script>
+        $(document).ready(function () {
+            $("form").on('submit', function (event) {
+                event.preventDefault();
+
+                const name = $("#name").val()
+                const movieType = $("#movie-type").val()
+                const age = $("input[name='age']:checked").val()
+                const usedBrowsers = $.map($("input[name='browsers']:checked"), function (el) {
+                    return $(el).val()
+                })
+                if (!name) {
+                    $("#message").html("Please enter a name")
+                    $("#message").css("color", "red")
+                }
+                else if (!age) {
+                    $("#message").html("Please pick your age")
+                    $("#message").css("color", "red")
+                }
+                else if (!usedBrowsers.length) {
+                    $("#message").html("Please pick the browsers that you used before")
+                    $("#message").css("color", "red")
+                }
+                else if (!movieType) {
+                    $("#message").html("Please pick the type of movie you prefers")
+                    $("#message").css("color", "red")
+                } else {
+                    $("#message").html("Thanks, your data was submitted!")
+                    $("#message").css("color", "green")
+                    $("form").trigger("reset")
+                }
+
+
+            })
+            $("#clearBtn").on("click", function () {
+                $("form").trigger("reset")
+                $("#message").html("")
+            })
+        })
+    </script>
 </body>
 
 </html>

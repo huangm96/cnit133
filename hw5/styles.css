@@ -22,3 +22,15 @@ ul.nav li a {
   text-decoration: none;
   color: black;
 }
+
+form {
+  width: max-content;
+  margin: 20px auto;
+}
+form div {
+  margin: 10px 20px;
+}
+
+#message {
+  text-align: center;
+}
