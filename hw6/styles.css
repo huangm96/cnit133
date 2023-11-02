@@ -22,3 +22,11 @@ ul.nav li a {
   text-decoration: none;
   color: black;
 }
+
+.part-1 form div {
+  margin-top: 10px;
+}
+
+#message .error {
+  color: red;
+}

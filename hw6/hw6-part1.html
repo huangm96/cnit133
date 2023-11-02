@@ -20,10 +20,49 @@
         <li><a href="./hw6-part2.html">Part 2 - Count Character</a></li>
         <li><a href="./hw6-part3.html">Part 3 - Phone Number Format </a></li>
     </ul>
+    <form>
+        <input type="" id="number" required>
+        <div>
+            <button type="submit">Submit</button>
+            <button type="reset" id="clearBtn">Clear</button>
+        </div>
 
+    </form>
+    <div id="message"></div>
     <script>
         $(document).ready(function () {
+            $("form").on("submit", function (e) {
+                e.preventDefault()
+                const num = $("#number").val()
+                const num_split = num.split(".")
+                console.log("🚀 ~ file: hw6-part1.html:38 ~ num_split:", num_split.length === 1)
 
+                if (num_split.length > 2) {
+                    $("#message").html("<p class='error'>Please check your number and try again.</p>")
+                } else if (num_split.length === 1 || num_split[1].length !== 4) {
+                    $("#message").html("<p class='error'>You need to type a number with at least 4 decimals, please try again.</p>")
+                } else {
+                    const num_float = parseFloat(num)
+                    const num_nearest_integer = Math.round(num_float)
+                    const num_square_root = Math.round(Math.sqrt(num_float))
+                    const num_tenths = num_float.toFixed(1)
+                    const num_hundredths = num_float.toFixed(2)
+                    const num_thousandths = num_float.toFixed(3)
+                    $("#message").html(`
+                <p>You typed number ${num_float}</p>
+                <p>Rounded to the nearest integer = ${num_nearest_integer}</p>
+                <p>Square root rounded to integer  = ${num_square_root}</p>
+                <p>Rounded to the nearest 10th position = ${num_tenths}</p>
+                <p>Rounded to the nearest 100th position = ${num_hundredths}</p>
+                <p>Rounded to the nearest 1000th position = ${num_thousandths}</p>
+                `)
+                }
+
+            })
+            $("#clearBtn").on("click", function () {
+                $("form").trigger("reset")
+                $("#message").html("")
+            })
         })
     </script>
 </body>
