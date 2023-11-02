@@ -22,11 +22,25 @@ ul.nav li a {
   text-decoration: none;
   color: black;
 }
-
+.part-1 form {
+  width: max-content;
+}
 .part-1 form div {
   margin-top: 10px;
+  text-align: right;
 }
 
-#message .error {
+.part-1 #message .error {
   color: red;
+}
+.part-2 form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.part-2 form label {
+  margin-top: 10px;
+}
+.part-2 form div {
+  margin-top: 10px;
 }

@@ -11,7 +11,7 @@
     <title>JavaScript - Homework 6</title>
 </head>
 
-<body>
+<body class="part-2">
     <h1>CNIT 133 Homework 6 (Part 2) - Count Character</h1>
     <ul class="nav">
         <li>
@@ -20,12 +20,46 @@
         <li><a href="./hw6-part1.html">Part 1 - Math</a></li>
         <li><a href="./hw6-part3.html">Part 3 - Phone Number Format </a></li>
     </ul>
-
-
+    <form>
+        <label for="long_content">Type a long content:</label>
+        <textarea id="long_content" rows="10"></textarea>
+        <label for="one_character">Type only one letter:</label>
+        <input type="text" id="one_character" maxlength="1">
+        <div>
+            <button type="submit">Submit</button>
+            <button type="reset" id="clearBtn">Clear</button>
+        </div>
+    </form>
+    <div id="message"></div>
     <script>
         $(document).ready(function () {
+            $("form").on('submit', function (e) {
+                e.preventDefault();
+                const long = $("#long_content").val();
+                const char = $("#one_character").val();
+                const count = search(long, char);
+                if (count > 0) {
+                    $("#message").html(`<p>${count} times the character ${char} shows up in the content </p>`)
+                } else {
+                    $("form").trigger("reset")
+                    $("#message").html(`<p>Search character ${char} not found in the content you typed</p>`)
+                    window.open("hw6-newWindow.html", "new", "width=300,height=100,left=600,top=300");
+                }
 
-
+            })
+            function search(str, char) {
+                let count = 0;
+                for (const s of str) {
+                    if (s.toLowerCase() === char.toLowerCase()) {
+                        count += 1
+                    }
+                }
+                return count;
+            }
+            $("#clearBtn").on("click", function () {
+                $("form").trigger("reset")
+                $("#message").html("")
+            })
         })
     </script>
 </body>

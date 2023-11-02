@@ -21,6 +21,7 @@
         <li><a href="./hw6-part3.html">Part 3 - Phone Number Format </a></li>
     </ul>
     <form>
+        <label for="number">Type a number with at least 4 decimals:</label>
         <input type="" id="number" required>
         <div>
             <button type="submit">Submit</button>
@@ -35,7 +36,6 @@
                 e.preventDefault()
                 const num = $("#number").val()
                 const num_split = num.split(".")
-                console.log("🚀 ~ file: hw6-part1.html:38 ~ num_split:", num_split.length === 1)
 
                 if (num_split.length > 2) {
                     $("#message").html("<p class='error'>Please check your number and try again.</p>")
