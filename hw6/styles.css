@@ -44,3 +44,12 @@ ul.nav li a {
 .part-2 form div {
   margin-top: 10px;
 }
+
+.part-3 form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.part-3 input {
+  margin-bottom: 10px;
+}

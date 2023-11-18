@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <title>JavaScript - Homework 6</title>
 </head>
@@ -20,11 +21,52 @@
         <li><a href="./hw6-part1.html">Part 1 - Math</a></li>
         <li><a href="./hw6-part2.html">Part 2 - Count Character </a></li>
     </ul>
-
+    <form>
+        <label for="phoneNumber">Enter your phone number</label>
+        <input type="text" name="" id="phoneNumber">
+        <label for="areaCode">Area Code</label>
+        <input type="text" name="" id="areaCode" readonly>
+        <label for="firstThreeNumber">First Three Number</label>
+        <input type="text" name="" id="firstThreeNumber" readonly>
+        <label for="lastFourNumber">Last Four Number</label>
+        <input type="text" name="" id="lastFourNumber" readonly>
+        <div>
+            <button type="submit">Submit</button>
+            <button type="reset" id="clearBtn">Clear</button>
+        </div>
+    </form>
+    <div id="message"></div>
     <script>
 
         $(document).ready(function () {
+            $('input[id="phoneNumber"]').mask('(000)000-0000');
+            $("form").on('submit', function (e) {
+                e.preventDefault();
+                $("#areaCode").val("")
+                $("#firstThreeNumber").val("")
+                $("#lastFourNumber").val("")
+                $("#message").html("")
+                const phone = $("#phoneNumber").val();
+                console.log(phone.length)
+                if (phone.length < 13) {
+                    $("#message").html(`<p style="color:red">Your phone number is too shore. It should be 10 numbers.</p>`)
+                } else {
+                    const phoneArr = phone.split("")
+                    const areaCode = phoneArr.slice(1, 4).join("")
+                    const firstThree = phoneArr.slice(5, 8).join("")
+                    const lastFour = phoneArr.slice(9, 13).join("")
+                    $("#areaCode").val(areaCode)
+                    $("#firstThreeNumber").val(firstThree)
+                    $("#lastFourNumber").val(lastFour)
 
+                }
+
+
+            })
+            $("#clearBtn").on("click", function () {
+                $("form").trigger("reset")
+                $("#message").html("")
+            })
         })
     </script>
 </body>
