@@ -22,3 +22,15 @@ ul.nav li a {
   text-decoration: none;
   color: black;
 }
+#container {
+  padding: 10px 30px;
+}
+.part-1 div {
+  margin: 10px 30px;
+}
+.part-1 form {
+  margin-bottom: 40px;
+}
+.part-1 form div {
+  margin-top: 10px;
+}

@@ -12,26 +12,80 @@
 </head>
 
 <body class="part-1">
-    <h1>CNIT 133 Homework 7 (Part 1) - Math</h1>
+    <h1>CNIT 133 Homework 7 (Part 1) - Styles</h1>
     <ul class="nav">
         <li>
             <a href="./hw7.html">Homework 7 Main Page</a>
         </li>
         <li><a href="./hw7-part2.html">Part 2 - Count Character</a></li>
     </ul>
+
+    <div id="container">
+        <h1>Changing Syles</h1>
+        <div id="paragraphs">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem optio culpa expedita reiciendis
+                assumenda
+                hic accusantium quos dolores nihil. Illo et quasi voluptatem! Sed provident laboriosam veritatis,
+                officiis
+                maxime sapiente?</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora vero nemo quae, maxime aliquam est
+                vitae
+                consequatur quos culpa quia mollitia eius, harum iste nobis? Porro ipsam consequatur blanditiis dolores?
+            </p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit earum incidunt amet in ea aspernatur
+                maiores
+                vero commodi fugiat laboriosam cupiditate non expedita autem, unde porro eos labore ipsum quaerat.</p>
+        </div>
+    </div>
+    <hr>
     <form>
-        <label for="number">Type a number with at least 4 decimals:</label>
-        <input id="number" required>
         <div>
-            <button type="submit">Submit</button>
-            <button type="reset" id="clearBtn">Clear</button>
+            <label>Background Color:</label>
+            <input type="radio" name="color" id="lightblue" value="lightblue"><label for="lightblue">Light
+                Blue</label>
+            <input type="radio" name="color" id="lightgreen" value="lightgreen"><label for="lightgreen">Light
+                Green</label>
+            <input type="radio" name="color" id="lightyellow" value="lightyellow"><label for="lightyellow">Light
+                Yellow</label>
+        </div>
+        <div>
+            <label>Font Style:</label>
+            <input type="checkbox" name="fontStyle text-decoration" id="underline" value="underline"><label
+                for="underline">Underline</label>
+            <input type="checkbox" name="fontStyle font-weight" id="bold" value="bold"><label for="bold">Bold</label>
+            <input type="checkbox" name="fontStyle font-style" id="italic" value="italic"><label
+                for="italic">Italic</label>
+        </div>
+
+        <div><label for="fontSize">Font Size: </label>
+            <select name="fontSize" id="fontSize">
+                <option value="1em">1em</option>
+                <option value="1.5em">1.5em</option>
+                <option value="2em">2em</option>
+            </select>
         </div>
 
     </form>
-    <div id="message"></div>
+
     <script>
         $(document).ready(function () {
 
+            let fontStyle = { "font-weight": false, "text-decoration": false, "font-style": false }
+
+            $("input[name='color']").change(function () {
+                $("#container").css("background-color", $(this).val())
+            })
+            $("input[name^='fontStyle']").change(function () {
+                const name = $(this).attr("name").split(" ")[1]
+                const value = $(this).val()
+                fontStyle[name] = !fontStyle[name]
+                $("#paragraphs").css(name, fontStyle[name] ? value : "")
+
+            })
+            $("#fontSize").change(function () {
+
+                $("#paragraphs").css("font-size", $(this).val())
+            })
         })
     </script>
 </body>
