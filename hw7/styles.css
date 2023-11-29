@@ -42,10 +42,7 @@ ul.nav li a {
   padding-bottom: 16px;
   margin-bottom: 16px;
 }
-.dropDownNav li {
-}
-.dropDownNav li:hover {
-}
+
 .dropDownNav li > a {
   text-decoration: none;
   color: black;
