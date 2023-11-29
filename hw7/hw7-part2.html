@@ -11,27 +11,48 @@
     <title>JavaScript - Homework 7</title>
 </head>
 
-<body class="part-1">
-    <h1>CNIT 133 Homework 7 (Part 2) - Math</h1>
+<body class="part-2">
+    <h1>CNIT 133 Homework 7 (Part 2) - Navigation</h1>
     <ul class="nav">
         <li>
             <a href="./hw7.html">Homework 7 Main Page</a>
         </li>
         <li><a href="./hw7-part1.html">Part 1 - Styles</a></li>
     </ul>
-    <form>
-        <label for="number">Type a number with at least 4 decimals:</label>
-        <input id="number" required>
-        <div>
-            <button type="submit">Submit</button>
-            <button type="reset" id="clearBtn">Clear</button>
-        </div>
 
-    </form>
-    <div id="message"></div>
+    <ul class="dropDownNav">
+        <li>
+            <a href="../hw2/hw2.html">Homework 2</a>
+            <div>
+                <a href="../hw2/hw2-part1.html">Part 1</a>
+                <a href="../hw2/hw2-part2.html">Part 2</a>
+                <a href="../hw2/hw2-extra.html">Extra</a>
+            </div>
+        </li>
+        <li><a href="../hw3/hw3.html">Homework 3</a>
+            <div>
+                <a href="../hw3/hw3-part1.html">Part 1</a>
+                <a href="../hw3/hw3-part2.html">Part 2</a>
+                <a href="../hw3/hw3-extra.html">Extra</a>
+            </div>
+        </li>
+        <li><a href="../hw4/hw4.html">Homework 4</a>
+            <div>
+                <a href="../hw4/hw4-part1.html">Part 1</a>
+                <a href="../hw4/hw4-part2.html">Part 2</a>
+                <a href="../hw4/hw4-extra.html">Extra</a>
+            </div>
+        </li>
+    </ul>
     <script>
         $(document).ready(function () {
 
+            $(".dropDownNav li").mouseenter(function () {
+                $(this).children("div").css("display", "flex")
+            })
+            $(".dropDownNav li").mouseleave(function () {
+                $(this).children("div").css("display", "none")
+            })
         })
     </script>
 </body>

@@ -22,7 +22,7 @@ ul.nav li a {
   text-decoration: none;
   color: black;
 }
-#container {
+#paragraphs {
   padding: 10px 30px;
 }
 .part-1 div {
@@ -33,4 +33,41 @@ ul.nav li a {
 }
 .part-1 form div {
   margin-top: 10px;
+}
+.dropDownNav {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+.dropDownNav li {
+}
+.dropDownNav li:hover {
+}
+.dropDownNav li > a {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 8px;
+  margin: 5px;
+}
+.dropDownNav li > a:hover {
+  background-color: rgb(187, 223, 246);
+}
+.dropDownNav li div {
+  padding: 8px 6px;
+  display: none;
+  flex-direction: column;
+  text-align: center;
+}
+.dropDownNav li div a {
+  text-decoration: none;
+  color: black;
+  padding: 5px 0;
+  border: 1px solid lightgrey;
+}
+.dropDownNav li div a:hover {
+  background-color: rgb(187, 223, 246);
 }

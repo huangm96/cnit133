@@ -17,26 +17,25 @@
         <li>
             <a href="./hw7.html">Homework 7 Main Page</a>
         </li>
-        <li><a href="./hw7-part2.html">Part 2 - Count Character</a></li>
+        <li><a href="./hw7-part2.html">Part 2 - Navigation</a></li>
     </ul>
 
-    <div id="container">
-        <h1>Changing Syles</h1>
-        <div id="paragraphs">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem optio culpa expedita reiciendis
-                assumenda
-                hic accusantium quos dolores nihil. Illo et quasi voluptatem! Sed provident laboriosam veritatis,
-                officiis
-                maxime sapiente?</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora vero nemo quae, maxime aliquam est
-                vitae
-                consequatur quos culpa quia mollitia eius, harum iste nobis? Porro ipsam consequatur blanditiis dolores?
-            </p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit earum incidunt amet in ea aspernatur
-                maiores
-                vero commodi fugiat laboriosam cupiditate non expedita autem, unde porro eos labore ipsum quaerat.</p>
-        </div>
+
+    <div id="paragraphs">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem optio culpa expedita reiciendis
+            assumenda
+            hic accusantium quos dolores nihil. Illo et quasi voluptatem! Sed provident laboriosam veritatis,
+            officiis
+            maxime sapiente?</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora vero nemo quae, maxime aliquam est
+            vitae
+            consequatur quos culpa quia mollitia eius, harum iste nobis? Porro ipsam consequatur blanditiis dolores?
+        </p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit earum incidunt amet in ea aspernatur
+            maiores
+            vero commodi fugiat laboriosam cupiditate non expedita autem, unde porro eos labore ipsum quaerat.</p>
     </div>
+
     <hr>
     <form>
         <div>
@@ -73,7 +72,7 @@
             let fontStyle = { "font-weight": false, "text-decoration": false, "font-style": false }
 
             $("input[name='color']").change(function () {
-                $("#container").css("background-color", $(this).val())
+                $("#paragraphs").css("background-color", $(this).val())
             })
             $("input[name^='fontStyle']").change(function () {
                 const name = $(this).attr("name").split(" ")[1]
