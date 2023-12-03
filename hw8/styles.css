@@ -1,0 +1,24 @@
+h1 {
+  text-align: center;
+}
+ul.nav {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  border-bottom: 2px solid gray;
+  margin-bottom: 16px;
+}
+ul.nav li {
+  border: 1px solid black;
+  padding: 8px;
+  margin: 5px;
+}
+ul.nav li:hover {
+  background-color: rgb(187, 223, 246);
+}
+ul.nav li a {
+  text-decoration: none;
+  color: black;
+}

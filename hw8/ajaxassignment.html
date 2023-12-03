@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Homework 8 for JavaScript, jQuery, AJAX course at CCSF">
+  <link rel="stylesheet" href="styles.css">
+  <title>Homework 8 - AJAX Application</title>
+</head>
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 5px;
+  }
+
+  div {
+    margin: 30px 50px;
+  }
+</style>
+
+<body>
+  <h1>CNIT 133 Homework 8 - AJAX Application</h1>
+  <ul class="nav">
+    <li><a href="../index.html">Home Page</a></li>
+
+  </ul>
+  <button type="button" onclick="loadDoc()">Get CD collection</button>
+  <br><br>
+  <table id="demo"></table>
+
+  <script>
+    function loadDoc() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        myFunction(this);
+      }
+      xhttp.open("GET", "cd_catalog.xml");
+      xhttp.send();
+    }
+    function myFunction(xml) {
+      const xmlDoc = xml.responseXML;
+      const x = xmlDoc.getElementsByTagName("CD");
+      let table = "<tr><th>Artist</th><th>Title</th></tr>";
+      for (let i = 0; i < x.length; i++) {
+        table += "<tr><td>" +
+          x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+          "</td><td>" +
+          x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+          "</td></tr>";
+      }
+      document.getElementById("demo").innerHTML = table;
+    }
+  </script>
+  <div>
+    <h2>Explanation of AJAX</h2>
+    <ul>
+      <li>When the user clicks the button, it will trigger the loadDoc() function.</li>
+      <li>In the loadDoc function, it initializes the XMLHttpRequest, and created a new XMLHttpRequest instance called
+        xhttp.</li>
+      <li>xhttp.onload: Set the onload event handler to call myFunction when the request is successfully completed</li>
+      <li>xhttp.open: Open a GET request to the XML file ("cd_catalog.xml").</li>
+      <li>xhttp.send: Send the HTTP request.</li>
+      <li>myFunction is exectuted when the request is successfully completed. It passes the xhttp object to myFunction.
+      </li>
+      <li>In myFunction, it uses the xml.responseXML to create an HTML table dynamically and displays the table to the
+        webpage.</li>
+    </ul>
+    <h2>REST API- newsapi</h2>
+    <p>It is an API that allows you to search worldwide news. You will get JSON back from this API.</p>
+    <p>You will need the api key to access and use the API. You need to first get your api key from the <a
+        href="https://newsapi.org/register">register link</a>. If you can use this api for free if you are a developer.
+      It
+      is
+      $449/month for business use. You can check the price <a href="https://newsapi.org/pricing">here</a>.</p>
+    <h4>Examples for using the API.</h4>
+    <p>Adding api key to the endpont:
+      <b>https://newsapi.org/v2/everything?q=tesla&apiKey=API_KEY</b>
+    </p>
+    <p><b>Click <a href="https://newsapi.org/docs">here</a> for the API documentation.</b></p>
+    <p>THere are two main endpoints for accessing the API.</p>
+    <ul>
+      <li><b>https://newsapi.org/v2/everything</b> - search every article published by over 80,000 different sources
+        large
+        and
+        small in the last 5 years. This endpoint is
+        ideal for news analysis and article discovery.
+        <p>Parameters:</p>
+        <ul>
+          <li><b>q</b> - Keywords or phrases to search for in the article title and body.</li>
+          <li><b>searchIn</b> - The fields to restrict your q search to. It can be title, description and content.</li>
+          <li><b>sources</b> - A comma-seperated string of identifiers (maximum 20) for the news sources or blogs you
+            want
+            headlines from.</li>
+          <li><b>other parameters that you can check in the docs: </b> - domains, excludeDomains, from, to, language,
+            sortBy, pageSize, and page. </li>
+          <br>
+        </ul>
+      </li>
+      <li><b>https://newsapi.org/v2/top-headlines</b> – returns breaking news headlines for countries, categories, and
+        singular
+        publishers. This is perfect for use with news
+        tickers or anywhere you want to use live up-to-date news headlines.
+        <p>Parameters:</p>
+        <ul>
+          <li><b>country</b> - The 2-letter ISO 3166-1 code of the country you want to get headlines for.</li>
+          <li><b>category</b> - The category you want to get headlines for. It can be business, entertainment, general,
+            health, science and more.</li>
+          <li><b>sources</b> - A comma-seperated string of identifiers (maximum 20) for the news sources or blogs you
+            want
+            headlines from.</li>
+          <li><b>other parameters that you can check in the docs: </b> - q, pageSize, and page. </li>
+          <br>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</body>
+
+</html>
